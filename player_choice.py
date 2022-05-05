@@ -28,7 +28,7 @@ def player_choice():
         prediction = np.round(model.predict(data),2)
         cv2.imshow('frame', frame)
         pred.append(prediction)
-        if cv2.waitKey(5000):
+        if cv2.waitKey(1) & 0xFF == ord('q'):
             break
                 
     # After the loop release the cap object

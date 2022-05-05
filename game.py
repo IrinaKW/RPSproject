@@ -3,6 +3,7 @@
 #libraries and functions
 import os
 import time
+from time import sleep
 import cv2 
 from keras.models import load_model
 import numpy as np
@@ -14,12 +15,15 @@ from outcome import outcome
 from countdown import countdown
 
 #Welcome part
+os.system("cls")
+print("==========================================================")
 print('Hello there and Welcome to the Rock, Paper, Scissors game!')
+print("==========================================================")
 print("\nYou have 5 attempts to win.")
-print('\nPlease enter your name', end='\r')
-player=input('\nPlease type in your name').upper()
+print('\n\nPlease enter your name', end='\r')
+player=input('\nPlease type in your name  ').upper()
 print(f"\n{player}, after the countdown of 5 seconds")
-print("please hold your hand as rock, paper or scissors shape in front of the camera", end="\r")
+print("please hold your hand as rock, paper or scissors shape in front of the camera")
 print("\n")
 
 def main():
@@ -51,17 +55,17 @@ def main():
     img1 = cv2.imread(player_im)
     cv2.putText(img1, 
         'PLAYER', 
-        (50, 50), 
+        (10, 10), 
         font, 1, 
-        (255, 255, 0), 
+        (255, 255, 255), 
         2, 
         cv2.LINE_4)
     img2 = cv2.imread(comp_im)
     cv2.putText(img2, 
         'COMPUTER', 
-        (50, 50), 
+        (10, 10), 
         font, 1, 
-        (255, 255, 0), 
+        (255, 255, 255), 
         2, 
         cv2.LINE_4)
     Hori = np.concatenate((img1, img2), axis=1)
@@ -84,13 +88,14 @@ def main():
 p=0
 c=0
 t=0
-while t<3:
+while t<5:
+    print(f"You have {5-t} tries")
+    print(f"Current score is: \nYOU {p}: COMPUTER {c} ")
     k=main()
     t=t+1
     if k=='c': c=c+1
     elif k=='p': p=p+1
-    # I'd like to clear the screen before new round but it doesn't work
-    #os.system('cls') 
+    os.system("cls") 
 
 if p==c:
     print(f"\nIt is a DRAW: {p}:{c}")
