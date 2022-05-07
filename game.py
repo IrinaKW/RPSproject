@@ -28,7 +28,7 @@ print("\n")
 
 def main():
     game_options=['ROCK', 'PAPER','SCISSORS']
-    images = {'ROCK':'rock.png', 'PAPER':'paper.png','SCISSORS':'scissors.png'}
+    images = {'ROCK':'./img/rock.png', 'PAPER':'./img/paper.png','SCISSORS':'./img/scissors.png'}
     countdown(5)
 
     #Computer random choice
@@ -55,7 +55,7 @@ def main():
     img1 = cv2.imread(player_im)
     cv2.putText(img1, 
         'PLAYER', 
-        (10, 10), 
+        (20, 20), 
         font, 1, 
         (255, 255, 255), 
         2, 
@@ -63,7 +63,7 @@ def main():
     img2 = cv2.imread(comp_im)
     cv2.putText(img2, 
         'COMPUTER', 
-        (10, 10), 
+        (20, 20), 
         font, 1, 
         (255, 255, 255), 
         2, 
@@ -103,7 +103,7 @@ elif p<c:
     print(f"\nYou Lost the Game: {p}:{c}\n Better Luck Next Time!")
 else:
     print(f"\nYou WON the Game: {p}:{c}\n")
-    img1 = cv2.imread('win.png')
+    img1 = cv2.imread('./img/win.png')
     cv2.imshow('results', img1)
     cv2.waitKey(10000)
     cv2.destroyAllWindows()
